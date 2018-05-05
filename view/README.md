@@ -1,6 +1,6 @@
 # Build
 
-    export VIEW_VERSION=1
+    export VIEW_VERSION=2
     docker build -t houseofmoran/baton-view:$VIEW_VERSION .
     docker push houseofmoran/baton-view:$VIEW_VERSION
     
