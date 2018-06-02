@@ -2,3 +2,7 @@
 node_modules/
 *~
 pact-mock-service.log
+*.iml
+target
+log/
+reports/
