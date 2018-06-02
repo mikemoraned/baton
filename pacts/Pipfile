@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pact-python = "*"
+requests = "*"
 
 [dev-packages]
 
