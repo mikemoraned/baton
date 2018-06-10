@@ -8,7 +8,7 @@
   "interactions": [
     {
       "description": "a request for playerA",
-      "providerState": "playerA exists",
+      "providerState": "playerA exists and has games",
       "request": {
         "method": "get",
         "path": "/players/playerA"
@@ -18,7 +18,31 @@
         "headers": {
         },
         "body": {
-          "id": "playerA"
+          "id": "playerA",
+          "games": [
+            {
+              "id": "gameA"
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          },
+          "$.body.id": {
+            "match": "regex",
+            "regex": "[a-zA-Z-]+"
+          },
+          "$.body.games": {
+            "min": 1
+          },
+          "$.body.games[*].*": {
+            "match": "type"
+          },
+          "$.body.games[*].id": {
+            "match": "regex",
+            "regex": "[a-zA-Z-]+"
+          }
         }
       }
     }
