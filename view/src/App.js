@@ -32,7 +32,7 @@ class App extends Component {
           <div className="container">
             <div className="content has-text-centered">
               <p>
-                <strong>Baton</strong> by <a href="http:/houseofmoran.com">Mike Moran</a>.
+                <strong>Baton</strong> by <a href="http://houseofmoran.com/">Mike Moran</a>.
               </p>
             </div>
           </div>
