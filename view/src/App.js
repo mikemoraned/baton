@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
 import './App.css';
 import 'bulma/css/bulma.css';
+
 import Game from "./Game";
+
+const GET_GAMES = gql`
+  {
+    games @client {
+      url
+    }
+  }
+`;
 
 class App extends Component {
   render() {
@@ -16,15 +28,15 @@ class App extends Component {
               My first website with <strong>Bulma</strong>!
             </p>
             <div className="columns">
-              <div className="column">
-                <Game url={"http://baton.houseofmoran.io/"}/>
-              </div>
-              <div className="column">
-                <Game url={"http://houseofmoran.com"}/>
-              </div>
-              <div className="column">
-                <Game url={"http://baton.houseofmoran.io/"}/>
-              </div>
+              <Query query={GET_GAMES}>
+                {({ data: { games } }) => (
+                  games.map( game => (
+                  <div className="column">
+                    <Game url={game.url} key={game.url} />
+                  </div>
+                  ))
+                )}
+              </Query>
             </div>
           </div>
         </section>
