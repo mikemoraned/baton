@@ -27,11 +27,11 @@ class App extends Component {
             <p className="subtitle">
               My first website with <strong>Bulma</strong>!
             </p>
-            <div className="columns">
+            <div>
               <Query query={GET_GAMES}>
                 {({ data: { games } }) => (
                   games.map( game => (
-                  <div className="column">
+                  <div>
                     <Game url={game.url} key={game.url} />
                   </div>
                   ))

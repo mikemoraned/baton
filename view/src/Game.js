@@ -1,13 +1,15 @@
 import React from 'react';
 import './Game.css';
 import QRCode from 'qrcode.react';
-import { withContentRect } from 'react-measure'
+import { withContentRect } from 'react-measure';
 
-const ExpandingQRCode = withContentRect('bounds')(({ measureRef, measure, contentRect, url }) => (
-  <div ref={measureRef}>
-    <QRCode value={url} size={contentRect.bounds.width}/>
+const MAX_SIZE = 600;
+const ExpandingQRCode = withContentRect('bounds')(({ measureRef, contentRect, url }) => {
+  const size = Math.min(contentRect.bounds.width, MAX_SIZE);
+  return <div ref={measureRef}>
+    <QRCode value={url} size={size}/>
   </div>
-));
+});
 
 const Game = ({url}) => {
   return <div className="card">
