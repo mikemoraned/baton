@@ -31,9 +31,7 @@ class App extends Component {
               <Query query={GET_GAMES}>
                 {({ data: { games } }) => (
                   games.map( game => (
-                    <div key={game.url}>
-                      <Game url={game.url} />
-                    </div>
+                    <Game url={game.url} key={game.url} />
                   ))
                 )}
               </Query>
