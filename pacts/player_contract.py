@@ -23,7 +23,7 @@ class GetPlayerInfoContract(unittest.TestCase):
         (pact
          .given('playerA exists and has games')
          .upon_receiving('a request for playerA')
-         .with_request('get', '/players/playerA')
+         .with_request('get', '/api/players/playerA')
          .will_respond_with(200, body=expected))
 
         with pact:

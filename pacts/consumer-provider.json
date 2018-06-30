@@ -11,7 +11,7 @@
       "providerState": "playerA exists and has games",
       "request": {
         "method": "get",
-        "path": "/players/playerA"
+        "path": "/api/players/playerA"
       },
       "response": {
         "status": 200,
