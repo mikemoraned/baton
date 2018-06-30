@@ -1,14 +1,15 @@
-import React from 'react';
-import './Game.css';
-import QRCode from 'qrcode.react';
-import { withContentRect } from 'react-measure';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Game.css";
+import QRCode from "qrcode.react";
+import { withContentRect } from "react-measure";
 
 const MAX_SIZE = 600;
-const ExpandingQRCode = withContentRect('bounds')(({ measureRef, contentRect, url }) => {
+const ExpandingQRCode = withContentRect("bounds")(({ measureRef, contentRect, url }) => {
   const size = Math.min(contentRect.bounds.width, MAX_SIZE);
   return <div ref={measureRef}>
     <QRCode value={url} size={size}/>
-  </div>
+  </div>;
 });
 
 const Game = ({url}) => {
@@ -36,10 +37,14 @@ const Game = ({url}) => {
         Phasellus nec iaculis mauris. <a>@bulmaio</a>.
         <a href="#">#css</a> <a href="#">#responsive</a>
         <br />
-          <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
       </div>
     </div>
   </div>;
+};
+
+Game.propTypes = {
+  url: PropTypes.string.isRequired
 };
 
 export default Game;

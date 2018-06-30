@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 
-import './App.css';
-import 'bulma/css/bulma.css';
+import "./App.css";
+import "bulma/css/bulma.css";
 
 import Game from "./Game";
 
@@ -31,9 +31,9 @@ class App extends Component {
               <Query query={GET_GAMES}>
                 {({ data: { games } }) => (
                   games.map( game => (
-                  <div>
-                    <Game url={game.url} key={game.url} />
-                  </div>
+                    <div key={game.url}>
+                      <Game url={game.url} />
+                    </div>
                   ))
                 )}
               </Query>
