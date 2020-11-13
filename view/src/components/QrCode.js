@@ -14,10 +14,11 @@ export function lazyLoader() {
 }
 
 function bindQrCode({ baton_lib, baton_lib_bg }) {
-    const { BatonLib } = baton_lib;
+    const { QrCodeGenerator } = baton_lib;
     const { memory } = baton_lib_bg;
 
     function QrCode() {
+        const generator = QrCodeGenerator.new(10, 10);
         return <div>QrCode</div>
     }
 
