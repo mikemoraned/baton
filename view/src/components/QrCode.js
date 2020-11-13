@@ -16,7 +16,7 @@ function bindQrCode({ baton_lib }) {
     const { QrCodeGenerator } = baton_lib;
 
     function QrCode() {
-        const generator = QrCodeGenerator.new(10, 10);
+        QrCodeGenerator.new(10, 10);
         return <div>QrCode</div>
     }
 
