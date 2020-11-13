@@ -1,50 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-const typeDefs = `
-  type Game {
-    url: String!
-  }
-
-  type Query {
-    games: [Game]
-  }
-`;
-
-const defaults = {
-  games: [
-    {
-      __typename: "Game",
-      url: "http://foo.com/"
-    },
-    {
-      __typename: "Game",
-      url: "http://bar.com/"
-    }
-  ]
-};
-
-const resolvers = [];
-
-const client = new ApolloClient({
-  uri: "https://w5xlvm3vzz.lp.gql.zone/graphql",
-  clientState: {
-    defaults,
-    resolvers,
-    typeDefs
-  }
-});
-
-const ApolloApp = () => (
-  <ApolloProvider client={client}>
+ReactDOM.render(
+  <React.StrictMode>
     <App />
-  </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
-ReactDOM.render(<ApolloApp />, document.getElementById("root"));
-registerServiceWorker();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
