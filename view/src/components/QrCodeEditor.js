@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { QrCode } from "./QrCode";
 import { useHistory } from "react-router-dom";
+import { SuccessButton } from "./SuccessButton";
 
 function buildColorPairs() {
   const schemeColors = schemeCategory10;
@@ -46,6 +47,9 @@ export function QrCodeEditor({
         </div>
       </div>
       <div className="card-content">
+        <SuccessButton
+          summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+        />
         <table className="table is-fullwidth">
           <thead>
             <tr>
