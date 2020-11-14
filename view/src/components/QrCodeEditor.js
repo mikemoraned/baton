@@ -15,16 +15,23 @@ function buildColorPairs() {
 
 const colorPairs = buildColorPairs();
 
-export function QrCodeEditor({ initialDarkColor, initialLightColor }) {
-  const [darkColor, setDarkColor] = useState(initialDarkColor);
-  const [lightColor, setLightColor] = useState(initialLightColor);
+export function QrCodeEditor({
+  initialBackgroundColor,
+  initialForegroundColor,
+}) {
+  const [backgroundColor, setBackgroundColor] = useState(
+    initialBackgroundColor
+  );
+  const [foregroundColor, setForegroundColor] = useState(
+    initialForegroundColor
+  );
 
   function chooseRandomPair() {
     const [color1, color2] = colorPairs[
       Math.floor(Math.random() * colorPairs.length)
     ];
-    setDarkColor(color1);
-    setLightColor(color2);
+    setBackgroundColor(color1);
+    setForegroundColor(color2);
   }
 
   return (
@@ -36,8 +43,8 @@ export function QrCodeEditor({ initialDarkColor, initialLightColor }) {
         <div className="box">
           <Suspense fallback={<div>loading</div>}>
             <QrCode
-              darkColor={darkColor}
-              lightColor={lightColor}
+              backgroundColor={backgroundColor}
+              foregroundColor={foregroundColor}
               onClick={chooseRandomPair}
             />
           </Suspense>
@@ -57,13 +64,13 @@ export function QrCodeEditor({ initialDarkColor, initialLightColor }) {
               <td>
                 <span
                   style={{
-                    backgroundColor: lightColor,
+                    backgroundColor: backgroundColor,
                     border: "1px solid black",
                   }}
                 >
                   &nbsp;&nbsp;&nbsp;
                 </span>{" "}
-                {lightColor}
+                {backgroundColor}
               </td>
             </tr>
             <tr>
@@ -71,13 +78,13 @@ export function QrCodeEditor({ initialDarkColor, initialLightColor }) {
               <td>
                 <span
                   style={{
-                    backgroundColor: darkColor,
+                    backgroundColor: foregroundColor,
                     border: "1px solid black",
                   }}
                 >
                   &nbsp;&nbsp;&nbsp;
                 </span>{" "}
-                {darkColor}
+                {foregroundColor}
               </td>
             </tr>
           </tbody>

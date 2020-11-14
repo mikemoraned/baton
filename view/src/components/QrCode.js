@@ -13,10 +13,12 @@ function lazyLoader() {
 function bindQrCode({ baton_lib }) {
   const { QrCodeGenerator } = baton_lib;
 
-  function QrCode({ darkColor, lightColor, onClick }) {
+  function QrCode({ foregroundColor, backgroundColor, onClick }) {
     const generator = QrCodeGenerator.new(500, 500);
-
-    const dataUri = generator.random_as_data_uri(darkColor, lightColor);
+    const dataUri = generator.random_as_data_uri(
+      backgroundColor,
+      foregroundColor
+    );
     console.dir(dataUri);
     return <img src={dataUri} alt="qr code" onClick={onClick} />;
   }

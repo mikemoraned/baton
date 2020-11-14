@@ -5,8 +5,8 @@ export function Home() {
   return (
     <div>
       <QrCodeEditor
-        initialDarkColor={"#000000"}
-        initialLightColor={"#FFFFFF"}
+        initialBackgroundColor={"#000000"}
+        initialForegroundColor={"#FFFFFF"}
       />
     </div>
   );
