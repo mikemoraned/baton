@@ -41,10 +41,15 @@ function bindQrCode({ baton_lib }) {
         const dataUri = generator.random_as_data_uri(darkColor, lightColor);
         console.dir(dataUri);
         return (<div className="card">
-                    <div className="card-image">
-                        <figure className="image is-square">
+                    <header className="card-header">
+                        <p className="card-header-title">
+                            Qr Code (Click to randomise)
+                        </p>
+                    </header>
+                    <div className="card-image has-text-centered">
+                        <div className="box">
                             <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>
-                        </figure>
+                        </div>
                     </div>
                     <div className="card-content">
                         <table className="table is-fullwidth">
