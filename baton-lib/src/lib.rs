@@ -1,6 +1,7 @@
 mod utils;
 
 extern crate base64;
+extern crate nom;
 
 use base64::encode;
 use image::codecs::png::PngEncoder;
@@ -8,6 +9,12 @@ use image::imageops::resize;
 use image::imageops::FilterType;
 use image::ColorType;
 use image::Rgba;
+use nom::{
+    bytes::complete::{tag, take_while_m_n},
+    combinator::map_res,
+    sequence::tuple,
+    IResult,
+};
 use qrcode::QrCode;
 use std::io::Write;
 use wasm_bindgen::prelude::*;
@@ -37,10 +44,18 @@ impl QrCodeGenerator {
         QrCodeGenerator { width, height }
     }
 
-    pub fn random_as_data_uri(&self) -> Result<String, JsValue> {
+    pub fn random_as_data_uri(
+        &self,
+        dark_color_hex: String,
+        light_color_hex: String,
+    ) -> Result<String, JsValue> {
+        let dark_color = hex_color(&dark_color_hex).unwrap();
+        let light_color = hex_color(&light_color_hex).unwrap();
         let code = QrCode::new(b"01234567").unwrap();
         let image = code
             .render::<Rgba<u8>>()
+            .dark_color(dark_color)
+            .light_color(light_color)
             .max_dimensions(self.width as u32, self.height as u32)
             .build();
         console::log_1(
@@ -72,4 +87,28 @@ impl QrCodeGenerator {
 
         Ok(data_uri)
     }
+}
+
+fn from_hex(input: &str) -> Result<u8, std::num::ParseIntError> {
+    u8::from_str_radix(input, 16)
+}
+
+fn is_hex_digit(c: char) -> bool {
+    c.is_digit(16)
+}
+
+fn hex_primary(input: &str) -> IResult<&str, u8> {
+    map_res(take_while_m_n(2, 2, is_hex_digit), from_hex)(input)
+}
+
+fn parse_hex_color(input: &str) -> IResult<&str, Rgba<u8>> {
+    let (input, _) = tag("#")(input)?;
+    let (input, (red, green, blue)) = tuple((hex_primary, hex_primary, hex_primary))(input)?;
+    let alpha = 255;
+    Ok((input, Rgba([red, green, blue, alpha])))
+}
+
+fn hex_color(input: &str) -> Result<Rgba<u8>, ()> {
+    let (_, output) = parse_hex_color(input).unwrap();
+    Ok(output)
 }

@@ -17,7 +17,9 @@ function bindQrCode({ baton_lib }) {
 
     function QrCode() {
         const generator = QrCodeGenerator.new(100, 100);
-        const dataUri = generator.random_as_data_uri();
+        const darkColor = "#add8e6";
+        const lightColor = "#FFC0CB";
+        const dataUri = generator.random_as_data_uri(darkColor, lightColor);
         console.dir(dataUri);
         return <img src={dataUri} alt="qr code" />;
     }
