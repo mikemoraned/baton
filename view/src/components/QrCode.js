@@ -40,12 +40,33 @@ function bindQrCode({ baton_lib }) {
 
         const dataUri = generator.random_as_data_uri(darkColor, lightColor);
         console.dir(dataUri);
-        return (<div>
-            <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>
-            <p>
-                {darkColor}, {lightColor}
-            </p>
-        </div>);
+        return (<div className="card">
+                    <div className="card-image">
+                        <figure className="image is-square">
+                            <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>
+                        </figure>
+                    </div>
+                    <div className="card-content">
+                        <table className="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Property</th>
+                                    <th width="50%">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Background Color</td>
+                                    <td><span style={{backgroundColor: lightColor, border: "1px solid black"}}>&nbsp;&nbsp;&nbsp;</span>{" "}{lightColor}</td>
+                                </tr>
+                                <tr>
+                                    <td>Foreground Color</td>
+                                    <td><span style={{backgroundColor: darkColor, border: "1px solid black"}}>&nbsp;&nbsp;&nbsp;</span>{" "}{darkColor}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>);
     }
 
     return { default: QrCode };

@@ -1,22 +1,15 @@
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import './App.scss';
 import { Home } from "./pages/Home";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+    <div className="container">
+      <div className="columns">
+        <div className="column">
+          <Home />
+        </div>
       </div>
-    </Router>
+    </div>
   );
 }
 
