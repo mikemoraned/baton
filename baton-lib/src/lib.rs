@@ -1,26 +1,21 @@
+mod hex_color;
 mod utils;
 
 extern crate base64;
 extern crate nom;
 
 use base64::encode;
+use hex_color::hex_color;
 use image::codecs::png::PngEncoder;
 use image::imageops::resize;
 use image::imageops::FilterType;
 use image::ColorType;
 use image::Rgba;
-use nom::{
-    bytes::complete::{tag, take_while_m_n},
-    combinator::map_res,
-    sequence::tuple,
-    IResult,
-};
+
 use qrcode::QrCode;
 use std::io::Write;
 use wasm_bindgen::prelude::*;
-use wasm_bindgen::Clamped;
 use web_sys::console;
-use web_sys::ImageData;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -58,14 +53,6 @@ impl QrCodeGenerator {
             .light_color(light_color)
             .max_dimensions(self.width as u32, self.height as u32)
             .build();
-        console::log_1(
-            &format!(
-                "qr code image dimensions: {}x{}",
-                image.width(),
-                image.height()
-            )
-            .into(),
-        );
         let rescaled_image = resize(
             &image,
             self.width as u32,
@@ -87,28 +74,4 @@ impl QrCodeGenerator {
 
         Ok(data_uri)
     }
-}
-
-fn from_hex(input: &str) -> Result<u8, std::num::ParseIntError> {
-    u8::from_str_radix(input, 16)
-}
-
-fn is_hex_digit(c: char) -> bool {
-    c.is_digit(16)
-}
-
-fn hex_primary(input: &str) -> IResult<&str, u8> {
-    map_res(take_while_m_n(2, 2, is_hex_digit), from_hex)(input)
-}
-
-fn parse_hex_color(input: &str) -> IResult<&str, Rgba<u8>> {
-    let (input, _) = tag("#")(input)?;
-    let (input, (red, green, blue)) = tuple((hex_primary, hex_primary, hex_primary))(input)?;
-    let alpha = 255;
-    Ok((input, Rgba([red, green, blue, alpha])))
-}
-
-fn hex_color(input: &str) -> Result<Rgba<u8>, ()> {
-    let (_, output) = parse_hex_color(input).unwrap();
-    Ok(output)
 }
