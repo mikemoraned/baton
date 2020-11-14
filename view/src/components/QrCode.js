@@ -36,11 +36,16 @@ function bindQrCode({ baton_lib }) {
             setLightColor(color2);
         }
 
-        const generator = QrCodeGenerator.new(100, 100);
+        const generator = QrCodeGenerator.new(500, 500);
 
         const dataUri = generator.random_as_data_uri(darkColor, lightColor);
         console.dir(dataUri);
-        return <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>;
+        return (<div>
+            <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>
+            <p>
+                {darkColor}, {lightColor}
+            </p>
+        </div>);
     }
 
     return { default: QrCode };
