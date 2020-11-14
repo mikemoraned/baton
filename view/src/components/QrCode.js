@@ -17,9 +17,9 @@ function bindQrCode({ baton_lib }) {
 
     function QrCode() {
         const generator = QrCodeGenerator.new(100, 100);
-        const imageData = generator.random();
-        console.dir(imageData);
-        return <div>QrCode</div>
+        const dataUri = generator.random_as_data_uri();
+        console.dir(dataUri);
+        return <img src={dataUri} alt="qr code" />;
     }
 
     return { default: QrCode };

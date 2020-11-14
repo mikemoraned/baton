@@ -1,9 +1,15 @@
 mod utils;
 
+extern crate base64;
+
+use base64::encode;
+use image::codecs::png::PngEncoder;
 use image::imageops::resize;
 use image::imageops::FilterType;
+use image::ColorType;
 use image::Rgba;
 use qrcode::QrCode;
+use std::io::Write;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::Clamped;
 use web_sys::console;
@@ -31,7 +37,7 @@ impl QrCodeGenerator {
         QrCodeGenerator { width, height }
     }
 
-    pub fn random(&self) -> Result<ImageData, JsValue> {
+    pub fn random_as_data_uri(&self) -> Result<String, JsValue> {
         let code = QrCode::new(b"01234567").unwrap();
         let image = code
             .render::<Rgba<u8>>()
@@ -51,12 +57,19 @@ impl QrCodeGenerator {
             self.height as u32,
             FilterType::Nearest,
         );
-        let mut pixels = rescaled_image.into_vec();
-        console::log_1(&format!("pixels length: {}", pixels.len()).into());
-        ImageData::new_with_u8_clamped_array_and_sh(
-            Clamped(&mut pixels),
-            self.width as u32,
-            self.height as u32,
-        )
+        let mut bytes: Vec<u8> = Vec::new();
+        let encoder = PngEncoder::new(bytes.by_ref());
+        encoder
+            .encode(
+                &rescaled_image.into_vec(),
+                self.width as u32,
+                self.height as u32,
+                ColorType::Rgba8,
+            )
+            .unwrap();
+
+        let data_uri = format!("data:image/png;base64,{}", encode(&bytes));
+
+        Ok(data_uri)
     }
 }
