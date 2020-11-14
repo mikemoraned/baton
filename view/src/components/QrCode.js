@@ -36,11 +36,42 @@ function bindQrCode({ baton_lib }) {
             setLightColor(color2);
         }
 
-        const generator = QrCodeGenerator.new(100, 100);
+        const generator = QrCodeGenerator.new(500, 500);
 
         const dataUri = generator.random_as_data_uri(darkColor, lightColor);
         console.dir(dataUri);
-        return <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>;
+        return (<div className="card">
+                    <header className="card-header">
+                        <p className="card-header-title">
+                            Qr Code (Click to randomise)
+                        </p>
+                    </header>
+                    <div className="card-image has-text-centered">
+                        <div className="box">
+                            <img src={dataUri} alt="qr code" onClick={chooseRandomPair}/>
+                        </div>
+                    </div>
+                    <div className="card-content">
+                        <table className="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th width="50%">Property</th>
+                                    <th width="50%">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Background Color</td>
+                                    <td><span style={{backgroundColor: lightColor, border: "1px solid black"}}>&nbsp;&nbsp;&nbsp;</span>{" "}{lightColor}</td>
+                                </tr>
+                                <tr>
+                                    <td>Foreground Color</td>
+                                    <td><span style={{backgroundColor: darkColor, border: "1px solid black"}}>&nbsp;&nbsp;&nbsp;</span>{" "}{darkColor}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>);
     }
 
     return { default: QrCode };
