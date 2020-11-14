@@ -1,6 +1,7 @@
 import "./App.scss";
 import { Home } from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Specific } from "./pages/Specific";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
           <Router>
             <Switch>
               <Route path="/code">
-                <Home />
+                <Specific />
               </Route>
               <Route path="/">
                 <Home />

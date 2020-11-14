@@ -19,7 +19,6 @@ function bindQrCode({ baton_lib }) {
       backgroundColor,
       foregroundColor
     );
-    console.dir(dataUri);
     return <img src={dataUri} alt="qr code" onClick={onClick} />;
   }
 

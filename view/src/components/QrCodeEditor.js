@@ -1,6 +1,7 @@
-import React, { useState, Suspense } from "react";
+import React, { Suspense } from "react";
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { QrCode } from "./QrCode";
+import { useHistory } from "react-router-dom";
 
 function buildColorPairs() {
   const schemeColors = schemeCategory10;
@@ -19,19 +20,13 @@ export function QrCodeEditor({
   initialBackgroundColor,
   initialForegroundColor,
 }) {
-  const [backgroundColor, setBackgroundColor] = useState(
-    initialBackgroundColor
-  );
-  const [foregroundColor, setForegroundColor] = useState(
-    initialForegroundColor
-  );
+  const history = useHistory();
 
   function chooseRandomPair() {
     const [color1, color2] = colorPairs[
       Math.floor(Math.random() * colorPairs.length)
     ];
-    setBackgroundColor(color1);
-    setForegroundColor(color2);
+    history.push(`/code?bg=${color1.substring(1)}&fg=${color2.substring(1)}`);
   }
 
   return (
@@ -43,8 +38,8 @@ export function QrCodeEditor({
         <div className="box">
           <Suspense fallback={<div>loading</div>}>
             <QrCode
-              backgroundColor={backgroundColor}
-              foregroundColor={foregroundColor}
+              backgroundColor={initialBackgroundColor}
+              foregroundColor={initialForegroundColor}
               onClick={chooseRandomPair}
             />
           </Suspense>
@@ -64,13 +59,13 @@ export function QrCodeEditor({
               <td>
                 <span
                   style={{
-                    backgroundColor: backgroundColor,
+                    backgroundColor: initialBackgroundColor,
                     border: "1px solid black",
                   }}
                 >
                   &nbsp;&nbsp;&nbsp;
                 </span>{" "}
-                {backgroundColor}
+                {initialBackgroundColor}
               </td>
             </tr>
             <tr>
@@ -78,13 +73,13 @@ export function QrCodeEditor({
               <td>
                 <span
                   style={{
-                    backgroundColor: foregroundColor,
+                    backgroundColor: initialForegroundColor,
                     border: "1px solid black",
                   }}
                 >
                   &nbsp;&nbsp;&nbsp;
                 </span>{" "}
-                {foregroundColor}
+                {initialForegroundColor}
               </td>
             </tr>
           </tbody>
