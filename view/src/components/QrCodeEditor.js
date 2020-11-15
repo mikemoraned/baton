@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { QrCode } from "./QrCode";
 import { useHistory } from "react-router-dom";
-import { SuccessButton } from "./SuccessButton";
+import { CategoryButton } from "./CategoryButton";
 
 function buildColorPairs() {
   const schemeColors = schemeCategory10;
@@ -32,9 +32,6 @@ export function QrCodeEditor({
 
   return (
     <div className="card">
-      <header className="card-header">
-        <p className="card-header-title">Qr Code (Click to randomise)</p>
-      </header>
       <div className="card-image has-text-centered">
         <div className="box">
           <Suspense fallback={<div>loading</div>}>
@@ -47,9 +44,27 @@ export function QrCodeEditor({
         </div>
       </div>
       <div className="card-content">
-        <SuccessButton
-          summary={`${initialBackgroundColor}-${initialForegroundColor}`}
-        />
+        <div className="content has-text-centered">
+          Could you scan this on QR Code on your phone/device?
+        </div>
+        <div className="buttons has-addons are-medium is-centered">
+          <CategoryButton
+            summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+            eventName="Failure"
+            className="is-danger"
+            onSubmitted={chooseRandomPair}
+          >
+            Not Scannable
+          </CategoryButton>
+          <CategoryButton
+            summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+            eventName="Success"
+            className="is-success"
+            onSubmitted={chooseRandomPair}
+          >
+            Scannable
+          </CategoryButton>
+        </div>
         <table className="table is-fullwidth">
           <thead>
             <tr>
