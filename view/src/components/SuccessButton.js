@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function SuccessButton({ summary }) {
+export function SuccessButton({ summary, onSubmitted }) {
   const [submitted, setSubmitted] = useState(false);
   console.log("reloading, summary:", summary, "submitted:", submitted);
 
@@ -14,22 +14,20 @@ export function SuccessButton({ summary }) {
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
+      onSubmitted();
     }, 1000);
   }
 
   if (submitted) {
     return (
-      <button className="button is-fullwidth is-medium" disabled>
+      <button className="button is-medium" disabled>
         Thanks!
       </button>
     );
   } else {
     return (
-      <button
-        className="button is-fullwidth is-medium is-success"
-        onClick={submit}
-      >
-        I could read this qr code
+      <button className="button is-medium is-success" onClick={submit}>
+        Scannable
       </button>
     );
   }

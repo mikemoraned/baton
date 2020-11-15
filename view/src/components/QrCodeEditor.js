@@ -47,15 +47,19 @@ export function QrCodeEditor({
         </div>
       </div>
       <div className="card-content">
-        <div className="buttons">
+        <div class="content has-text-centered">
+          Could you scan this on QR Code on your phone/device?
+        </div>
+        <div className="buttons has-addons is-centered">
           <button
-            className="button is-fullwidth is-link is-medium"
+            className="button is-danger is-medium"
             onClick={chooseRandomPair}
           >
-            Go to next random choice
+            Not scannable
           </button>
           <SuccessButton
             summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+            onSubmitted={chooseRandomPair}
           />
         </div>
         <table className="table is-fullwidth">
