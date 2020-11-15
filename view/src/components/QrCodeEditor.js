@@ -34,7 +34,9 @@ export function QrCodeEditor({
     <div className="card">
       <div className="card-image has-text-centered">
         <div className="box">
-          <Suspense fallback={<div>loading</div>}>
+          <Suspense
+            fallback={<div style={{ width: 500, height: 500 }}>loading</div>}
+          >
             <QrCode
               backgroundColor={initialBackgroundColor}
               foregroundColor={initialForegroundColor}
