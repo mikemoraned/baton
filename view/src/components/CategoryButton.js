@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 
-export function SuccessButton({ summary, onSubmitted }) {
+export function CategoryButton({
+  summary,
+  eventName,
+  onSubmitted,
+  className,
+  children,
+}) {
   const [submitted, setSubmitted] = useState(false);
-  console.log("reloading, summary:", summary, "submitted:", submitted);
 
   function submit() {
     window.plausible =
@@ -10,24 +15,25 @@ export function SuccessButton({ summary, onSubmitted }) {
       function () {
         (window.plausible.q = window.plausible.q || []).push(arguments);
       };
-    window.plausible("Success", { props: { summary } });
+    window.plausible(eventName, { props: { summary } });
+    console.log("Submitted", eventName, "for", summary);
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
       onSubmitted();
-    }, 1000);
+    }, 500);
   }
 
   if (submitted) {
     return (
-      <button className="button is-medium" disabled>
+      <button className="button" disabled>
         Thanks!
       </button>
     );
   } else {
     return (
-      <button className="button is-medium is-success" onClick={submit}>
-        Scannable
+      <button className={`button ${className}`} onClick={submit}>
+        {children}
       </button>
     );
   }

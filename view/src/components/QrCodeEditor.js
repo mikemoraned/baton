@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { schemeCategory10 } from "d3-scale-chromatic";
 import { QrCode } from "./QrCode";
 import { useHistory } from "react-router-dom";
-import { SuccessButton } from "./SuccessButton";
+import { CategoryButton } from "./CategoryButton";
 
 function buildColorPairs() {
   const schemeColors = schemeCategory10;
@@ -47,20 +47,26 @@ export function QrCodeEditor({
         </div>
       </div>
       <div className="card-content">
-        <div class="content has-text-centered">
+        <div className="content has-text-centered">
           Could you scan this on QR Code on your phone/device?
         </div>
-        <div className="buttons has-addons is-centered">
-          <button
-            className="button is-danger is-medium"
-            onClick={chooseRandomPair}
-          >
-            Not scannable
-          </button>
-          <SuccessButton
+        <div className="buttons has-addons are-medium is-centered">
+          <CategoryButton
             summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+            eventName="Failure"
+            className="is-danger"
             onSubmitted={chooseRandomPair}
-          />
+          >
+            Not Scannable
+          </CategoryButton>
+          <CategoryButton
+            summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+            eventName="Success"
+            className="is-success"
+            onSubmitted={chooseRandomPair}
+          >
+            Scannable
+          </CategoryButton>
         </div>
         <table className="table is-fullwidth">
           <thead>
