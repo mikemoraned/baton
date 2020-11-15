@@ -32,7 +32,11 @@ export function CategoryButton({
     );
   } else {
     return (
-      <button className={`button ${className}`} onClick={submit}>
+      <button
+        className={`button ${className}`}
+        onClick={submit}
+        onKeyPress={submit}
+      >
         {children}
       </button>
     );
