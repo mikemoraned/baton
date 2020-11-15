@@ -15,10 +15,7 @@ function bindQrCode({ baton_lib }) {
 
   function QrCode({ foregroundColor, backgroundColor, onClick }) {
     const generator = QrCodeGenerator.new(500, 500);
-    const dataUri = generator.random_as_data_uri(
-      backgroundColor,
-      foregroundColor
-    );
+    const dataUri = generator.as_data_uri(backgroundColor, foregroundColor);
     return <img src={dataUri} alt="qr code" onClick={onClick} />;
   }
 

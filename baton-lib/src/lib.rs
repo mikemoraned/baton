@@ -39,7 +39,7 @@ impl QrCodeGenerator {
         QrCodeGenerator { width, height }
     }
 
-    pub fn random_as_data_uri(
+    pub fn as_data_uri(
         &self,
         dark_color_hex: String,
         light_color_hex: String,
