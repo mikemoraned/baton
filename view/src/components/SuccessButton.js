@@ -19,17 +19,17 @@ export function SuccessButton({ summary }) {
 
   if (submitted) {
     return (
-      <button className="button is-fullwidth is-large" disabled>
+      <button className="button is-fullwidth is-medium" disabled>
         Thanks!
       </button>
     );
   } else {
     return (
       <button
-        className="button is-fullwidth is-large is-success"
+        className="button is-fullwidth is-medium is-success"
         onClick={submit}
       >
-        Could you read it?
+        I could read this qr code
       </button>
     );
   }

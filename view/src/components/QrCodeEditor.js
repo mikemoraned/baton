@@ -47,9 +47,17 @@ export function QrCodeEditor({
         </div>
       </div>
       <div className="card-content">
-        <SuccessButton
-          summary={`${initialBackgroundColor}-${initialForegroundColor}`}
-        />
+        <div className="buttons">
+          <button
+            className="button is-fullwidth is-link is-medium"
+            onClick={chooseRandomPair}
+          >
+            Go to next random choice
+          </button>
+          <SuccessButton
+            summary={`${initialBackgroundColor}-${initialForegroundColor}`}
+          />
+        </div>
         <table className="table is-fullwidth">
           <thead>
             <tr>
