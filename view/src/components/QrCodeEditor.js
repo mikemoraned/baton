@@ -32,9 +32,6 @@ export function QrCodeEditor({
 
   return (
     <div className="card">
-      <header className="card-header">
-        <p className="card-header-title">Qr Code (Click to randomise)</p>
-      </header>
       <div className="card-image has-text-centered">
         <div className="box">
           <Suspense fallback={<div>loading</div>}>
