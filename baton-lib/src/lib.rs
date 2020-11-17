@@ -41,16 +41,17 @@ impl QrCodeGenerator {
 
     pub fn as_data_uri(
         &self,
-        dark_color_hex: String,
-        light_color_hex: String,
+        foreground_color_hex: String,
+        background_color_hex: String,
     ) -> Result<String, JsValue> {
-        let dark_color = hex_color(&dark_color_hex).unwrap();
-        let light_color = hex_color(&light_color_hex).unwrap();
-        let code = QrCode::new(b"01234567").unwrap();
+        let foreground_color = hex_color(&foreground_color_hex).unwrap();
+        let background_color = hex_color(&background_color_hex).unwrap();
+        let message = format!("{}-{}", background_color_hex, foreground_color_hex);
+        let code = QrCode::new(message.to_string().into_bytes()).unwrap();
         let image = code
             .render::<Rgba<u8>>()
-            .dark_color(dark_color)
-            .light_color(light_color)
+            .dark_color(foreground_color)
+            .light_color(background_color)
             .max_dimensions(self.width as u32, self.height as u32)
             .build();
         let rescaled_image = resize(
