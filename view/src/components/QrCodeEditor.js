@@ -33,7 +33,7 @@ export function QrCodeEditor({
   return (
     <div className="card">
       <div className="card-image has-text-centered">
-        <div className="box">
+        <div className="p-2">
           <Suspense
             fallback={<div style={{ width: 500, height: 500 }}>loading</div>}
           >
