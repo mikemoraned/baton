@@ -35,7 +35,7 @@ export function Successes() {
               {entries.map(({ name }) => {
                 const [bg, fg] = name.split("-", 2);
                 return (
-                  <div key={`${bg}-${fg}`}>
+                  <div key={`${bg}-${fg}`} className="mb-4">
                     <QrCodeEditor
                       initialBackgroundColor={bg}
                       initialForegroundColor={fg}
