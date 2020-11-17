@@ -47,7 +47,7 @@ impl QrCodeGenerator {
         let foreground_color = hex_color(&foreground_color_hex).unwrap();
         let background_color = hex_color(&background_color_hex).unwrap();
         let message = format!("{}-{}", background_color_hex, foreground_color_hex);
-        let code = QrCode::new(message.to_string().into_bytes()).unwrap();
+        let code = QrCode::new(message.into_bytes()).unwrap();
         let image = code
             .render::<Rgba<u8>>()
             .dark_color(foreground_color)
