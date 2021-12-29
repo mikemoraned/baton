@@ -1,4 +1,4 @@
-use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 
 markup::define! {
     Home<'a>(title: &'a str) {
@@ -43,18 +43,14 @@ markup::define! {
     }
 }
 
-// fn main() {
-//     println!(
-//         "{}",
-//         Home {
-//             title: "Example Domain"
-//         }
-//     )
-// }
-
-async fn greet(req: HttpRequest) -> impl Responder {
-    let name = req.match_info().get("name").unwrap_or("World");
-    format!("Hello {}!", &name)
+async fn greet() -> impl Responder {
+    HttpResponse::Ok()
+        .content_type("text/html")
+        .body(format!("{}",
+            Home {
+                title: "Example Domain"
+            }
+        ))
 }
 
 
@@ -63,7 +59,6 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(greet))
-            .route("/{name}", web::get().to(greet))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
