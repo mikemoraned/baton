@@ -8,78 +8,31 @@
   animation-play-state: paused;
 }
 
-.cell.to-x0.to-y0 {
-  animation-name: move-to-x0, move-to-y0;
-  animation-delay: 0s;
-}
-
-.cell.to-x1.to-y0 {
-  animation-name: move-to-x1, move-to-y0;
-  animation-delay: 0.1s;
-}
-
-.cell.to-x2.to-y0 {
-  animation-name: move-to-x2, move-to-y0;
-  animation-delay: 0.2s;
-}
-
-.cell.to-x0.to-y1 {
-  animation-name: move-to-x0, move-to-y1;
-  animation-delay: 0.3s;
-}
-
-.cell.to-x0.to-y1.to-filled {
-  animation-name: move-to-x0, move-to-y1, to-filled;
-  animation-delay: 0.3s;
-}
-
-.cell.to-x1.to-y1 {
-  animation-name: move-to-x1, move-to-y1;
-  animation-delay: 0.4s;
-}
-
-.cell.to-x2.to-y1 {
-  animation-name: move-to-x2, move-to-y1;
-  animation-delay: 0.5s;
-}
-
-.cell.to-x0.to-y2 {
-  animation-name: move-to-x0, move-to-y2;
-  animation-delay: 0.6s;
-}
-
-.cell.to-x1.to-y2 {
-  animation-name: move-to-x1, move-to-y2;
-  animation-delay: 0.7s;
-}
-
-// .cell.to-x2.to-y2 {
-//   animation-name: move-to-x2, move-to-y2;
-//   animation-delay: 0.8s;
-// }
-
-// .cell.to-x2.to-y2.to-empty {
-//   animation-name: move-to-x2, move-to-y2, to-empty;
-//   animation-delay: 0.8s;
-// }
-
 @mixin define-cell-animation($x, $y, $delay) {
   .cell.to-x#{$x}.to-y#{$y} {
     animation-name: move-to-x#{$x}, move-to-y#{$y};
-    animation-delay: $delay;
+    animation-delay: #{$delay};
   }
 
   .cell.to-x#{$x}.to-y#{$y}.to-filled {
     animation-name: move-to-x#{$x}, move-to-y#{$y}, to-filled;
-    animation-delay: $delay;
+    animation-delay: #{$delay};
   }
 
   .cell.to-x#{$x}.to-y#{$y}.to-empty {
     animation-name: move-to-x#{$x}, move-to-y#{$y}, to-empty;
-    animation-delay: $delay;
+    animation-delay: #{$delay};
   }
 }
 
+@include define-cell-animation("0", "0", "0.0s");
+@include define-cell-animation("1", "0", "0.1s");
+@include define-cell-animation("2", "0", "0.2s");
+@include define-cell-animation("0", "1", "0.3s");
+@include define-cell-animation("1", "1", "0.4s");
+@include define-cell-animation("2", "1", "0.5s");
+@include define-cell-animation("0", "2", "0.6s");
+@include define-cell-animation("1", "2", "0.7s");
 @include define-cell-animation("2", "2", "0.8s");
 
 @keyframes to-filled {
