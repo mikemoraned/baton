@@ -1,7 +1,8 @@
 .qrcode .cell {
   animation-duration: 5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  /* animation-iteration-count: infinite;
+  animation-direction: alternate; */
+  animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }
 
@@ -29,6 +30,11 @@
   animation-delay: 0.3s;
 }
 
+.cell.to-x0.to-y1.to-filled {
+  animation-name: move-to-x0, move-to-y1, to-filled;
+  animation-delay: 0.3s;
+}
+
 .cell.to-x1.to-y1 {
   animation-name: move-to-x1, move-to-y1;
   animation-delay: 0.4s;
@@ -52,6 +58,25 @@
 .cell.to-x2.to-y2 {
   animation-name: move-to-x2, move-to-y2;
   animation-delay: 0.8s;
+}
+
+.cell.to-x2.to-y2.to-empty {
+  animation-name: move-to-x2, move-to-y2, to-empty;
+  animation-delay: 0.8s;
+}
+
+@keyframes to-filled {
+  to {
+    background-color: black;
+    opacity: 1;
+  }
+}
+
+@keyframes to-empty {
+  to {
+    background-color: white;
+    opacity: 0;
+  }
 }
 
 @keyframes move-to-x0 {
