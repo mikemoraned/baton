@@ -17,38 +17,38 @@
     width: 90px;
     height: 90px;
     position: absolute;
-  }
 
-  .cell.filled {
-    background-color: black;
-  }
+    &.filled {
+      background-color: black;
+    }
 
-  .cell.empty {
-    background-color: white;
-    opacity: 0;
-  }
+    &.empty {
+      background-color: white;
+      opacity: 0;
+    }
 
-  .cell.x0 {
-    left: 0px;
-  }
+    &.x0 {
+      left: 0px;
+    }
 
-  .cell.x1 {
-    left: 90px;
-  }
+    &.x1 {
+      left: 90px;
+    }
 
-  .cell.x2 {
-    left: 180px;
-  }
+    &.x2 {
+      left: 180px;
+    }
 
-  .cell.y0 {
-    top: 0px;
-  }
+    &.y0 {
+      top: 0px;
+    }
 
-  .cell.y1 {
-    top: 90px;
-  }
+    &.y1 {
+      top: 90px;
+    }
 
-  .cell.y2 {
-    top: 180px;
+    &.y2 {
+      top: 180px;
+    }
   }
 }
