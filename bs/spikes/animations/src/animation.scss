@@ -1,7 +1,5 @@
 .qrcode .cell {
   animation-duration: 5s;
-  /* animation-iteration-count: infinite;
-  animation-direction: alternate; */
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }
@@ -55,15 +53,34 @@
   animation-delay: 0.7s;
 }
 
-.cell.to-x2.to-y2 {
-  animation-name: move-to-x2, move-to-y2;
-  animation-delay: 0.8s;
+// .cell.to-x2.to-y2 {
+//   animation-name: move-to-x2, move-to-y2;
+//   animation-delay: 0.8s;
+// }
+
+// .cell.to-x2.to-y2.to-empty {
+//   animation-name: move-to-x2, move-to-y2, to-empty;
+//   animation-delay: 0.8s;
+// }
+
+@mixin define-cell-animation($x, $y, $delay) {
+  .cell.to-x#{$x}.to-y#{$y} {
+    animation-name: move-to-x#{$x}, move-to-y#{$y};
+    animation-delay: $delay;
+  }
+
+  .cell.to-x#{$x}.to-y#{$y}.to-filled {
+    animation-name: move-to-x#{$x}, move-to-y#{$y}, to-filled;
+    animation-delay: $delay;
+  }
+
+  .cell.to-x#{$x}.to-y#{$y}.to-empty {
+    animation-name: move-to-x#{$x}, move-to-y#{$y}, to-empty;
+    animation-delay: $delay;
+  }
 }
 
-.cell.to-x2.to-y2.to-empty {
-  animation-name: move-to-x2, move-to-y2, to-empty;
-  animation-delay: 0.8s;
-}
+@include define-cell-animation("2", "2", "0.8s");
 
 @keyframes to-filled {
   to {
