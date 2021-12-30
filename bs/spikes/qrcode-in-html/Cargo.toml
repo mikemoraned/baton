@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 markup = "0.12.5"
 actix-web = "3.3.3"
+qrcode-generator = "4.1.2"

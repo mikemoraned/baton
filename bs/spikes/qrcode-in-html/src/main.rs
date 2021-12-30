@@ -1,4 +1,5 @@
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use qrcode_generator::QrCodeEcc;
 
 markup::define! {
     Home<'a>(filled: &'a Vec<Vec<bool>>) {
@@ -31,7 +32,9 @@ markup::define! {
 }
 
 async fn greet() -> impl Responder {
-    let filled = vec![vec![true]];
+    let message = "Hello world";
+
+    let filled: Vec<Vec<bool>> = qrcode_generator::to_matrix(message, QrCodeEcc::High).unwrap();
     HttpResponse::Ok()
         .content_type("text/html")
         .body(format!("{}",
