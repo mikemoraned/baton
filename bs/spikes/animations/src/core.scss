@@ -12,41 +12,43 @@
   position: relative;
 }
 
-.qrcode .cell {
-  width: 90px;
-  height: 90px;
-  position: absolute;
-}
+.qrcode {
+  .cell {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+  }
 
-.qrcode .cell.filled {
-  background-color: black;
-}
+  .cell.filled {
+    background-color: black;
+  }
 
-.qrcode .cell.empty {
-  background-color: white;
-  opacity: 0;
-}
+  .cell.empty {
+    background-color: white;
+    opacity: 0;
+  }
 
-.qrcode .cell.x0 {
-  left: 0px;
-}
+  .cell.x0 {
+    left: 0px;
+  }
 
-.qrcode .cell.x1 {
-  left: 90px;
-}
+  .cell.x1 {
+    left: 90px;
+  }
 
-.qrcode .cell.x2 {
-  left: 180px;
-}
+  .cell.x2 {
+    left: 180px;
+  }
 
-.qrcode .cell.y0 {
-  top: 0px;
-}
+  .cell.y0 {
+    top: 0px;
+  }
 
-.qrcode .cell.y1 {
-  top: 90px;
-}
+  .cell.y1 {
+    top: 90px;
+  }
 
-.qrcode .cell.y2 {
-  top: 180px;
+  .cell.y2 {
+    top: 180px;
+  }
 }
