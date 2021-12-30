@@ -4,35 +4,74 @@
   animation-direction: alternate;
 }
 
+.cell.to-x0.to-y0 {
+  animation-name: move-to-x0, move-to-y0;
+}
+
+.cell.to-x1.to-y0 {
+  animation-name: move-to-x1, move-to-y0;
+}
+
+.cell.to-x2.to-y0 {
+  animation-name: move-to-x2, move-to-y0;
+}
+
+.cell.to-x0.to-y1 {
+  animation-name: move-to-x0, move-to-y1;
+}
+
+.cell.to-x1.to-y1 {
+  animation-name: move-to-x1, move-to-y1;
+}
+
+.cell.to-x2.to-y1 {
+  animation-name: move-to-x2, move-to-y1;
+}
+
 .cell.to-x0.to-y2 {
-  animation-name: move-to-x0-y2;
+  animation-name: move-to-x0, move-to-y2;
 }
 
 .cell.to-x1.to-y2 {
-  animation-name: move-to-x1-y2;
+  animation-name: move-to-x1, move-to-y2;
 }
 
 .cell.to-x2.to-y2 {
-  animation-name: move-to-x2-y2;
+  animation-name: move-to-x2, move-to-y2;
 }
 
-@keyframes move-to-x0-y2 {
+@keyframes move-to-x0 {
   to {
     left: 0px;
-    top: 180px;
   }
 }
 
-@keyframes move-to-x1-y2 {
+@keyframes move-to-x1 {
   to {
     left: 90px;
-    top: 180px;
   }
 }
 
-@keyframes move-to-x2-y2 {
+@keyframes move-to-x2 {
   to {
     left: 180px;
+  }
+}
+
+@keyframes move-to-y0 {
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes move-to-y1 {
+  to {
+    top: 90px;
+  }
+}
+
+@keyframes move-to-y2 {
+  to {
     top: 180px;
   }
 }
