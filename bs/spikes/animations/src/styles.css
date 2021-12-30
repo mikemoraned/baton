@@ -1,0 +1,56 @@
+.qrcode div {
+  padding: 0px;
+  margin: 0px;
+}
+
+.qrcode {
+  border: 1px dashed red;
+  width: 270px;
+  height: 270px;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+}
+
+.qrcode .cell {
+  width: 90px;
+  height: 90px;
+}
+
+.qrcode .cell.filled {
+  background-color: black;
+}
+
+.qrcode .cell.empty {
+  background-color: gray;
+}
+
+.qrcode .cell.x0 {
+  position: absolute;
+  left: 0px;
+}
+
+.qrcode .cell.x1 {
+  position: absolute;
+  left: 90px;
+}
+
+.qrcode .cell.x2 {
+  position: absolute;
+  left: 180px;
+}
+
+.qrcode .cell.y0 {
+  position: absolute;
+  top: 0px;
+}
+
+.qrcode .cell.y1 {
+  position: absolute;
+  top: 90px;
+}
+
+.qrcode .cell.y2 {
+  position: absolute;
+  top: 180px;
+}
