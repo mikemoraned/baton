@@ -12,14 +12,14 @@
   .cell.to-x#{$x}.to-y#{$y} {
     animation-name: move-to-x#{$x}, move-to-y#{$y};
     animation-delay: #{$delay};
-  }
 
-  .cell.to-x#{$x}.to-y#{$y}.to-filled {
-    animation-name: move-to-x#{$x}, move-to-y#{$y}, to-filled;
-  }
+    &.to-filled {
+      animation-name: move-to-x#{$x}, move-to-y#{$y}, to-filled;
+    }
 
-  .cell.to-x#{$x}.to-y#{$y}.to-empty {
-    animation-name: move-to-x#{$x}, move-to-y#{$y}, to-empty;
+    &.to-empty {
+      animation-name: move-to-x#{$x}, move-to-y#{$y}, to-empty;
+    }
   }
 }
 
