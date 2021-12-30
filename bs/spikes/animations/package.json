@@ -1,0 +1,17 @@
+{
+  "name": "animations",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "type": "module",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Mike Moran <mike@houseofmoran.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
+}
