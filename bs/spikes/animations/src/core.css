@@ -22,7 +22,8 @@
 }
 
 .qrcode .cell.empty {
-  background-color: gray;
+  background-color: white;
+  opacity: 0;
 }
 
 .qrcode .cell.x0 {

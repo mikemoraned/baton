@@ -1,7 +1,12 @@
 .qrcode .cell {
-  animation-duration: 3s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+.qrcode:hover .cell {
+  animation-play-state: paused;
 }
 
 .cell.to-x0.to-y0 {
