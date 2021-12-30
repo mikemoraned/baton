@@ -16,12 +16,10 @@
 
   .cell.to-x#{$x}.to-y#{$y}.to-filled {
     animation-name: move-to-x#{$x}, move-to-y#{$y}, to-filled;
-    animation-delay: #{$delay};
   }
 
   .cell.to-x#{$x}.to-y#{$y}.to-empty {
     animation-name: move-to-x#{$x}, move-to-y#{$y}, to-empty;
-    animation-delay: #{$delay};
   }
 }
 
