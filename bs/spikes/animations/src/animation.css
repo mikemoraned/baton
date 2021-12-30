@@ -1,0 +1,13 @@
+.cell.to-x0.to-y2 {
+  animation-duration: 3s;
+  animation-name: move;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes move {
+  to {
+    left: 0px;
+    top: 180px;
+  }
+}
