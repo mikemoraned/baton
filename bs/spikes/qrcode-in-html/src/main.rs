@@ -6,21 +6,33 @@ markup::define! {
         @markup::doctype()
         html {
             head {
-                // style {
-                //     "body { background: #fafbfc; }"
-                //     "#main { padding: 2rem; }"
-                // }
+                style {
+                    "div.qrcode { 
+                        background: red;
+                    }"
+                    "div.row {
+                        clear: left;
+                    }"
+                    "div.cell {
+                        width: 15px;
+                        height: 15px;
+                        float: left;
+                    }"
+                    "div.filled {
+                        background: black;
+                    }"
+                }
             }
             body {
-                div {
+                div.qrcode {
                     @for row in filled.iter() {
-                        div {
+                        div.row {
                             @for entry in row.iter() {
                                 @if *entry {
-                                    span.filled { "#" }
+                                    div.cell.filled { "#" }
                                 }
                                 else {
-                                    span.empty { " "}
+                                    div.cell.empty { "."}
                                 }
                             }
                         }
