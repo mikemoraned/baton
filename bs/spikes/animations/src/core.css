@@ -15,6 +15,7 @@
 .qrcode .cell {
   width: 90px;
   height: 90px;
+  position: absolute;
 }
 
 .qrcode .cell.filled {
@@ -27,31 +28,25 @@
 }
 
 .qrcode .cell.x0 {
-  position: absolute;
   left: 0px;
 }
 
 .qrcode .cell.x1 {
-  position: absolute;
   left: 90px;
 }
 
 .qrcode .cell.x2 {
-  position: absolute;
   left: 180px;
 }
 
 .qrcode .cell.y0 {
-  position: absolute;
   top: 0px;
 }
 
 .qrcode .cell.y1 {
-  position: absolute;
   top: 90px;
 }
 
 .qrcode .cell.y2 {
-  position: absolute;
   top: 180px;
 }
