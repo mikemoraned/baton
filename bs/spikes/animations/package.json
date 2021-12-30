@@ -12,6 +12,7 @@
   "author": "Mike Moran <mike@houseofmoran.com>",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
     "parcel": "^2.0.1"
   }
 }
