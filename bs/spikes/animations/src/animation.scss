@@ -23,6 +23,42 @@
   }
 }
 
+@mixin define-move-to-x-keyframe($x) {
+  $rand1: random();
+  $rand2: random();
+  @keyframes move-to-x#{$x} {
+    50% {
+      left: -1 * $rand1 * 10px;
+    }
+
+    75% {
+      left: -1 * $rand2 * 20px;
+    }
+
+    to {
+      left: $x * 90px;
+    }
+  }
+}
+
+@mixin define-move-to-y-keyframe($y) {
+  $rand1: random();
+  $rand2: random();
+  @keyframes move-to-y#{$y} {
+    50% {
+      top: -1 * $rand1 * 10px;
+    }
+
+    75% {
+      top: -1 * $rand2 * 20px;
+    }
+
+    to {
+      top: $y * 90px;
+    }
+  }
+}
+
 $width: 3;
 $height: 3;
 $delay: 0;
@@ -32,6 +68,12 @@ $delay_inc: 0.1;
     @include define-cell-animation($x, $y, "#{$delay}s");
     $delay: $delay + $delay_inc;
   }
+}
+@for $x from 0 to $width {
+  @include define-move-to-x-keyframe($x);
+}
+@for $y from 0 to $height {
+  @include define-move-to-y-keyframe($y);
 }
 
 @keyframes to-filled {
@@ -48,86 +90,86 @@ $delay_inc: 0.1;
   }
 }
 
-@keyframes move-to-x0 {
-  50% {
-    left: -10px;
-  }
+// @keyframes move-to-x0 {
+//   50% {
+//     left: -10px;
+//   }
 
-  75% {
-    left: -20px;
-  }
+//   75% {
+//     left: -20px;
+//   }
 
-  to {
-    left: 0px;
-  }
-}
+//   to {
+//     left: 0px;
+//   }
+// }
 
-@keyframes move-to-x1 {
-  50% {
-    left: 10px;
-  }
+// @keyframes move-to-x1 {
+//   50% {
+//     left: 10px;
+//   }
 
-  75% {
-    left: 20px;
-  }
+//   75% {
+//     left: 20px;
+//   }
 
-  to {
-    left: 90px;
-  }
-}
+//   to {
+//     left: 90px;
+//   }
+// }
 
-@keyframes move-to-x2 {
-  50% {
-    left: 200px;
-  }
+// @keyframes move-to-x2 {
+//   50% {
+//     left: 200px;
+//   }
 
-  75% {
-    left: 190px;
-  }
+//   75% {
+//     left: 190px;
+//   }
 
-  to {
-    left: 180px;
-  }
-}
+//   to {
+//     left: 180px;
+//   }
+// }
 
-@keyframes move-to-y0 {
-  50% {
-    top: -3px;
-  }
+// @keyframes move-to-y0 {
+//   50% {
+//     top: -3px;
+//   }
 
-  75% {
-    top: -20px;
-  }
+//   75% {
+//     top: -20px;
+//   }
 
-  to {
-    top: 0px;
-  }
-}
+//   to {
+//     top: 0px;
+//   }
+// }
 
-@keyframes move-to-y1 {
-  50% {
-    top: 50px;
-  }
+// @keyframes move-to-y1 {
+//   50% {
+//     top: 50px;
+//   }
 
-  75% {
-    top: 100px;
-  }
+//   75% {
+//     top: 100px;
+//   }
 
-  to {
-    top: 90px;
-  }
-}
+//   to {
+//     top: 90px;
+//   }
+// }
 
-@keyframes move-to-y2 {
-  50% {
-    top: 111px;
-  }
+// @keyframes move-to-y2 {
+//   50% {
+//     top: 111px;
+//   }
 
-  75% {
-    top: 189px;
-  }
+//   75% {
+//     top: 189px;
+//   }
 
-  to {
-    top: 180px;
-  }
-}
+//   to {
+//     top: 180px;
+//   }
+// }
