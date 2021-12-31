@@ -23,13 +23,12 @@
   }
 }
 
-$x_axis: 0, 1, 2;
-$y_axis: 0, 1, 2;
-
+$width: 3;
+$height: 3;
 $delay: 0;
 $delay_inc: 0.1;
-@each $x in $x_axis {
-  @each $y in $y_axis {
+@for $x from 0 to $width {
+  @for $y from 0 to $height {
     @include define-cell-animation($x, $y, "#{$delay}s");
     $delay: $delay + $delay_inc;
   }
