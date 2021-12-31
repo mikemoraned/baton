@@ -23,38 +23,51 @@
   }
 }
 
+@function random-sign() {
+  $rand: random();
+  @if ($rand < 0.5) {
+    @return -1;
+  } @else {
+    @return 1;
+  }
+}
+
 @mixin define-move-to-x-keyframe($x) {
+  $sign: random-sign();
   $rand1: random();
   $rand2: random();
+  $final: $x * 90px;
   @keyframes move-to-x#{$x} {
     50% {
-      left: -1 * $rand1 * 10px;
+      left: ($sign * $rand1 * 10px) + $final;
     }
 
     75% {
-      left: -1 * $rand2 * 20px;
+      left: ($sign * $rand2 * 20px) + $final;
     }
 
     to {
-      left: $x * 90px;
+      left: $final;
     }
   }
 }
 
 @mixin define-move-to-y-keyframe($y) {
+  $sign: random-sign();
   $rand1: random();
   $rand2: random();
+  $final: $y * 90px;
   @keyframes move-to-y#{$y} {
     50% {
-      top: -1 * $rand1 * 10px;
+      top: ($sign * $rand1 * 10px) + $final;
     }
 
     75% {
-      top: -1 * $rand2 * 20px;
+      top: ($sign * $rand2 * 20px) + $final;
     }
 
     to {
-      top: $y * 90px;
+      top: $final;
     }
   }
 }
