@@ -21,18 +21,49 @@
       <div class="cell empty to-filled x1 y2 to-x1 to-y0">.</div>
       <div class="cell filled x2 y2 to-x0 to-y0">#</div> -->
     </div>
-    <script>
+    <script type="module">
+      import shuffle from "shuffle-array";
+
       const parent = document.getElementById("parent");
       function cell(fromFill, toFill, fromX, fromY, toX, toY) {
         const node = document.createElement("div");
         node.setAttribute(
           "class",
-          `cell ${fromFill} to-${toFill} x${fromX} y${fromY} to-x${toX} to-y${toY}`
+          `cell ${fromFill ? "filled" : "empty"} to-${
+            toFill ? "filled" : "empty"
+          } x${fromX} y${fromY} to-x${toX} to-y${toY}`
         );
         node.appendChild(document.createTextNode(fromFill ? "#" : "."));
         return node;
       }
-      parent.appendChild(cell("filled", "empty", 0, 0, 2, 2));
+      const width = 3;
+      const height = 3;
+      const from = [
+        ["#", ".", "#"],
+        [".", "#", "#"],
+        ["#", ".", "#"],
+      ];
+      const reifiedFrom = [];
+      const reifiedTo = [];
+      for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
+          reifiedFrom.push({ x, y, filled: from[y][x] === "#" });
+          reifiedTo.push({ x, y, filled: from[y][x] === "#" });
+        }
+      }
+      shuffle(reifiedTo);
+      for (let i = 0; i < reifiedFrom.length; i++) {
+        parent.appendChild(
+          cell(
+            reifiedFrom[i].filled,
+            reifiedFrom[i].filled,
+            reifiedFrom[i].x,
+            reifiedFrom[i].y,
+            reifiedTo[i].x,
+            reifiedTo[i].y
+          )
+        );
+      }
     </script>
   </body>
 </html>
