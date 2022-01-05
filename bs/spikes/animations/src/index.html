@@ -6,13 +6,12 @@
     <style type="text/scss">
       @import "constants";
       @import "definitions";
-
       @include define-grid(3, 3);
     </style>
   </head>
   <body>
-    <div class="qrcode">
-      <div class="cell filled to-empty x0 y0 to-x2 to-y2">#</div>
+    <div class="qrcode" id="parent">
+      <!-- <div class="cell filled to-empty x0 y0 to-x2 to-y2">#</div>
       <div class="cell empty x1 y0 to-x1 to-y2">.</div>
       <div class="cell filled to-empty x2 y0 to-x0 to-y2">#</div>
       <div class="cell empty x0 y1 to-x2 to-y1">.</div>
@@ -20,7 +19,20 @@
       <div class="cell empty to-filled x2 y1 to-x0 to-y1">.</div>
       <div class="cell filled x0 y2 to-x2 to-y0">#</div>
       <div class="cell empty to-filled x1 y2 to-x1 to-y0">.</div>
-      <div class="cell filled x2 y2 to-x0 to-y0">#</div>
+      <div class="cell filled x2 y2 to-x0 to-y0">#</div> -->
     </div>
+    <script>
+      const parent = document.getElementById("parent");
+      function cell(fromFill, toFill, fromX, fromY, toX, toY) {
+        const node = document.createElement("div");
+        node.setAttribute(
+          "class",
+          `cell ${fromFill} to-${toFill} x${fromX} y${fromY} to-x${toX} to-y${toY}`
+        );
+        node.appendChild(document.createTextNode(fromFill ? "#" : "."));
+        return node;
+      }
+      parent.appendChild(cell("filled", "empty", 0, 0, 2, 2));
+    </script>
   </body>
 </html>
