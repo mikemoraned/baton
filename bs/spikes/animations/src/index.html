@@ -3,7 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <title>Animations</title>
-    <link rel="stylesheet" href="grid3x3.scss" />
+    <style type="text/scss">
+      @import "constants";
+      @import "definitions";
+
+      @include define-grid(3, 3);
+    </style>
   </head>
   <body>
     <div class="qrcode">
