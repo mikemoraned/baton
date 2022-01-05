@@ -22,26 +22,26 @@
   }
 }
 
-@mixin define-position-x($x) {
+@mixin define-position-x($x, $cellWidth) {
   .qrcode {
     .cell.x#{$x} {
-      left: $x * 90px;
+      left: $x * $cellWidth;
     }
   }
 }
 
-@mixin define-move-to-x-keyframe($x) {
+@mixin define-move-to-x-keyframe($x, $cellWidth) {
   $sign: random-sign();
   $rand1: random();
   $rand2: random();
-  $final: $x * 90px;
+  $final: $x * $cellWidth;
   @keyframes move-to-x#{$x} {
     50% {
-      left: ($sign * $rand1 * 10px) + $final;
+      left: ($sign * $rand1 * calc(10 / 90) * $cellWidth) + $final;
     }
 
     75% {
-      left: ($sign * $rand2 * 20px) + $final;
+      left: ($sign * $rand2 * calc(20 / 90) * $cellWidth) + $final;
     }
 
     to {
@@ -50,26 +50,26 @@
   }
 }
 
-@mixin define-position-y($y) {
+@mixin define-position-y($y, $cellHeight) {
   .qrcode {
     .cell.y#{$y} {
-      top: $y * 90px;
+      top: $y * $cellHeight;
     }
   }
 }
 
-@mixin define-move-to-y-keyframe($y) {
+@mixin define-move-to-y-keyframe($y, $cellHeight) {
   $sign: random-sign();
   $rand1: random();
   $rand2: random();
-  $final: $y * 90px;
+  $final: $y * $cellHeight;
   @keyframes move-to-y#{$y} {
     50% {
-      top: ($sign * $rand1 * 10px) + $final;
+      top: ($sign * $rand1 * calc(10 / 90) * $cellHeight) + $final;
     }
 
     75% {
-      top: ($sign * $rand2 * 20px) + $final;
+      top: ($sign * $rand2 * calc(20 / 90) * $cellHeight) + $final;
     }
 
     to {
@@ -84,6 +84,9 @@
     height: $height * 90px;
   }
 
+  $cellWidth: 90px;
+  $cellHeight: 90px;
+
   $delay: 0;
   $delay_inc: 0.1;
   @for $x from 0 to $width {
@@ -93,11 +96,11 @@
     }
   }
   @for $x from 0 to $width {
-    @include define-position-x($x);
-    @include define-move-to-x-keyframe($x);
+    @include define-position-x($x, $cellWidth);
+    @include define-move-to-x-keyframe($x, $cellWidth);
   }
   @for $y from 0 to $height {
-    @include define-position-y($y);
-    @include define-move-to-y-keyframe($y);
+    @include define-position-y($y, $cellHeight);
+    @include define-move-to-y-keyframe($y, $cellHeight);
   }
 }
