@@ -1,13 +1,3 @@
-.qrcode .cell {
-  animation-duration: 5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-}
-
-.qrcode:hover .cell {
-  animation-play-state: paused;
-}
-
 @mixin define-cell-animation($x, $y, $delay) {
   .cell.to-x#{$x}.to-y#{$y} {
     animation-name: move-to-x#{$x}, move-to-y#{$y};
@@ -32,6 +22,14 @@
   }
 }
 
+@mixin define-position-x($x) {
+  .qrcode {
+    .cell.x#{$x} {
+      left: $x * 90px;
+    }
+  }
+}
+
 @mixin define-move-to-x-keyframe($x) {
   $sign: random-sign();
   $rand1: random();
@@ -48,6 +46,14 @@
 
     to {
       left: $final;
+    }
+  }
+}
+
+@mixin define-position-y($y) {
+  .qrcode {
+    .cell.y#{$y} {
+      top: $y * 90px;
     }
   }
 }
@@ -72,33 +78,21 @@
   }
 }
 
-$width: 3;
-$height: 3;
-$delay: 0;
-$delay_inc: 0.1;
-@for $x from 0 to $width {
+@mixin define-grid($width, $height) {
+  $delay: 0;
+  $delay_inc: 0.1;
+  @for $x from 0 to $width {
+    @for $y from 0 to $height {
+      @include define-cell-animation($x, $y, "#{$delay}s");
+      $delay: $delay + $delay_inc;
+    }
+  }
+  @for $x from 0 to $width {
+    @include define-position-x($x);
+    @include define-move-to-x-keyframe($x);
+  }
   @for $y from 0 to $height {
-    @include define-cell-animation($x, $y, "#{$delay}s");
-    $delay: $delay + $delay_inc;
-  }
-}
-@for $x from 0 to $width {
-  @include define-move-to-x-keyframe($x);
-}
-@for $y from 0 to $height {
-  @include define-move-to-y-keyframe($y);
-}
-
-@keyframes to-filled {
-  to {
-    background-color: black;
-    opacity: 1;
-  }
-}
-
-@keyframes to-empty {
-  to {
-    background-color: white;
-    opacity: 0;
+    @include define-position-y($y);
+    @include define-move-to-y-keyframe($y);
   }
 }
