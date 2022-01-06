@@ -44,7 +44,7 @@
       left: ($sign * $rand2 * calc(20 / 90) * $cellWidth) + $final;
     }
 
-    90% {
+    85% {
       left: $final;
     }
 
@@ -76,7 +76,7 @@
       top: ($sign * $rand2 * calc(20 / 90) * $cellHeight) + $final;
     }
 
-    90% {
+    85% {
       top: $final;
     }
 
