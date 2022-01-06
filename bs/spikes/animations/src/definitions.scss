@@ -80,8 +80,8 @@
 
 @mixin define-grid($width, $height) {
   .qrcode {
-    width: $width * 110px;
-    height: $height * 110px;
+    width: 500px;
+    height: 500px;
   }
 
   $cellWidth: calc(100% / $width);
