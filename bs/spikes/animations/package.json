@@ -16,6 +16,7 @@
     "parcel": "^2.0.1"
   },
   "dependencies": {
+    "qrcode-generator": "^1.4.4",
     "shuffle-array": "^1.0.1"
   }
 }
