@@ -1,0 +1,52 @@
+.qrcode div {
+  padding: 0px;
+  margin: 0px;
+}
+
+.qrcode {
+  border: 1px dashed red;
+  padding: 0px;
+  margin: 20px;
+  position: relative;
+}
+
+.qrcode {
+  .cell {
+    position: absolute;
+
+    &.filled {
+      background-color: black;
+    }
+
+    &.empty {
+      background-color: white;
+      opacity: 0;
+    }
+  }
+}
+
+.qrcode .cell {
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+
+.qrcode:hover .cell {
+  animation-play-state: paused;
+}
+
+@keyframes to-filled {
+  to {
+    background-color: black;
+    opacity: 1;
+  }
+}
+
+@keyframes to-empty {
+  to {
+    background-color: white;
+    opacity: 0;
+  }
+}

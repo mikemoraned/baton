@@ -1,0 +1,22 @@
+{
+  "name": "animations",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "type": "module",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Mike Moran <mike@houseofmoran.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "qrcode-generator": "^1.4.4",
+    "shuffle-array": "^1.0.1"
+  }
+}
