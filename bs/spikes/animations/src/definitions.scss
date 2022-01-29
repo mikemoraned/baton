@@ -36,15 +36,15 @@
   $rand2: random();
   $final: $x * $cellWidth;
   @keyframes move-to-x#{$x} {
-    50% {
+    40% {
       left: ($sign * $rand1 * calc(10 / 90) * $cellWidth) + $final;
     }
 
-    75% {
+    50% {
       left: ($sign * $rand2 * calc(20 / 90) * $cellWidth) + $final;
     }
 
-    85% {
+    65% {
       left: $final;
     }
 
@@ -68,15 +68,15 @@
   $rand2: random();
   $final: $y * $cellHeight;
   @keyframes move-to-y#{$y} {
-    50% {
+    40% {
       top: ($sign * $rand1 * calc(10 / 90) * $cellHeight) + $final;
     }
 
-    75% {
+    50% {
       top: ($sign * $rand2 * calc(20 / 90) * $cellHeight) + $final;
     }
 
-    85% {
+    65% {
       top: $final;
     }
 
