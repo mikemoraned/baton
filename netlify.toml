@@ -1,6 +1,6 @@
 [build]
-  base = "view"
-  publish = "build"
+  base = "bs/spikes/animations"
+  publish = "dist/"
   command = "npm run build"
 
 [[redirects]]
